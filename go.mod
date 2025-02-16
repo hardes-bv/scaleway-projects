@@ -1,4 +1,4 @@
-module hardes-iac-projects
+module codeberg.org/hardes/iac-projects
 
 go 1.22
 
