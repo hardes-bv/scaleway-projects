@@ -35,9 +35,16 @@ func NewDnsProject(ctx *pulumi.Context, org string) error {
 
 	// Create some policies with restricted access to this project and the group as principal
 	_, err = iam.NewPolicy(ctx, "hardes-admin", &iam.PolicyArgs{
+		Name:           pulumi.String("hardes-admin"),
 		GroupId:        adminGroup.ID(),
 		OrganizationId: orgInput,
 		Rules: iam.PolicyRuleArray{
+			iam.PolicyRuleArgs{
+				OrganizationId: orgInput,
+				PermissionSetNames: pulumi.StringArray{
+					pulumi.String("IAMManager"),
+				},
+			},
 			iam.PolicyRuleArgs{
 				ProjectIds: pulumi.StringArray{
 					project.ID(),
