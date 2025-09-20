@@ -13,3 +13,4 @@ values:
     SCW_DEFAULT_REGION: fr-par
   pulumiConfig:
     organizationId: ${scaleway.production.organizationId}
+    projectId: ${scaleway.production.projectId}
