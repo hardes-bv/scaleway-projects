@@ -1,0 +1,15 @@
+# values is a required top-level key
+values:
+  scaleway:
+    fn::open::pulumi-stacks:
+      stacks:
+        production:
+          stack: hardes-iac-projects/production
+
+  environmentVariables:
+    SCW_ACCESS_KEY: ${scaleway.production.accessKey}
+    SCW_SECRET_KEY: ${scaleway.production.secretKey}
+    SCW_DEFAULT_PROJECT_ID: ${scaleway.production.projectId}
+    SCW_DEFAULT_REGION: fr-par
+  pulumiConfig:
+    organizationId: ${scaleway.production.organizationId}

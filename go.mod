@@ -3,6 +3,7 @@ module codeberg.org/hardes/iac-projects
 go 1.24
 
 require (
+	github.com/pulumi/pulumi-pulumiservice/sdk v0.31.0
 	github.com/pulumi/pulumi/sdk/v3 v3.196.0
 	github.com/pulumiverse/pulumi-scaleway/sdk v1.34.0
 )
