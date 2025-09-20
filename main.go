@@ -15,27 +15,27 @@ func NewDnsProject(ctx *pulumi.Context, org string) error {
 	orgInput := pulumi.String(org)
 
 	// Create the Scaleway Project for `hardes.be` domain management
-	dnsProjectName := "hardes"
-	project, err := account.NewProject(ctx, dnsProjectName, &account.ProjectArgs{
-		Name:           pulumi.String(dnsProjectName),
+	projectName := "hardes"
+	project, err := account.NewProject(ctx, projectName, &account.ProjectArgs{
+		Name:           pulumi.String(projectName),
 		Description:    pulumi.String("Hardes"),
 		OrganizationId: orgInput,
 	})
 	if err != nil {
-		return fmt.Errorf("error creating project %v: %v", dnsProjectName, err)
+		return fmt.Errorf("error creating project %v: %v", projectName, err)
 	}
 
 	// Create an IAM Group
-	dnsAdminGroup, err := iam.NewGroup(ctx, "hardes-dns", &iam.GroupArgs{
+	adminGroup, err := iam.NewGroup(ctx, "hardes-dns", &iam.GroupArgs{
 		OrganizationId: orgInput,
 	})
 	if err != nil {
-		return fmt.Errorf("error creating IAM group %v: %v", dnsProjectName, err)
+		return fmt.Errorf("error creating IAM group %v: %v", projectName, err)
 	}
 
 	// Create some policies with restricted access to this project and the group as principal
 	_, err = iam.NewPolicy(ctx, "hardes-admin", &iam.PolicyArgs{
-		GroupId:        dnsAdminGroup.ID(),
+		GroupId:        adminGroup.ID(),
 		OrganizationId: orgInput,
 		Rules: iam.PolicyRuleArray{
 			iam.PolicyRuleArgs{
@@ -59,6 +59,15 @@ func NewDnsProject(ctx *pulumi.Context, org string) error {
 	if err != nil {
 		return fmt.Errorf("error creating IAM application \"pulumi-hardes\": %v", err)
 	}
+
+	_, err = iam.NewGroupMembership(ctx, "pulumi-hardes-member", &iam.GroupMembershipArgs{
+		GroupId:       adminGroup.ID(),
+		ApplicationId: app.ID(),
+	})
+	if err != nil {
+		return fmt.Errorf("error creating group membership \"pulumi-hardes\": %v", err)
+	}
+
 	apiKey, err := iam.NewApiKey(ctx, "pulumi-hardes", &iam.ApiKeyArgs{
 		ApplicationId: app.ID(),
 	})
