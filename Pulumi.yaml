@@ -1,7 +1,6 @@
 name: hardes-iac-projects
 description: Management of Scaleway Projects for Hardes
-runtime: go
-config:
-  pulumi:tags:
-    value:
-      pulumi:template: go
+runtime:
+  name: python
+  options:
+    toolchain: uv

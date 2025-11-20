@@ -1,2 +1,6 @@
 # Jetbrains IDEs
 .idea
+.venv
+
+# Python
+__pychache__/
