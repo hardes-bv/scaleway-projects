@@ -69,7 +69,7 @@ api_key = scaleway.iam.ApiKey(
 
 escEnvironment = pulumiservice.Environment(
     "environmentResource",
-    name="hardes",
+    name=project.name,
     organization=pulumi.get_organization(),
     yaml=pulumi.FileAsset("environment.yaml"),
     project="scaleway"
