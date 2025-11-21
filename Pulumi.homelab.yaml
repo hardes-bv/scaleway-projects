@@ -1,0 +1,7 @@
+environment:
+  - scaleway/admin
+config:
+  scaleway-projects:project:
+    name: homelab
+    description: Manage resources related to the homelab
+
