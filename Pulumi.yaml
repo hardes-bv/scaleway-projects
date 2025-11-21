@@ -1,5 +1,5 @@
-name: hardes-iac-projects
-description: Management of Scaleway Projects for Hardes
+name: scaleway-projects
+description: Management of Scaleway Projects under the Hardes Scaleway account
 runtime:
   name: python
   options:
