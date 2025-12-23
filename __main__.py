@@ -1,3 +1,4 @@
+import pathlib
 import pulumi
 import pulumiverse_scaleway as scaleway
 from pulumiverse_scaleway.iam import PolicyRuleArgs
@@ -67,11 +68,16 @@ api_key = scaleway.iam.ApiKey(
     application_id=app.id,
 )
 
+# Create an ESC environment fetching the stack outputs of this same stack.
+esc_template_path = pathlib.Path(__file__).parent / "environment.yaml"
+esc_template = esc_template_path.read_text()
+esc_actual_env = esc_template.format(stack=pulumi.get_stack())
+
 escEnvironment = pulumiservice.Environment(
     "environmentResource",
     name=project.name,
     organization=pulumi.get_organization(),
-    yaml=pulumi.FileAsset("environment.yaml"),
+    yaml=pulumi.StringAsset(esc_actual_env),
     project="scaleway"
 )
 

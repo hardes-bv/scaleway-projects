@@ -3,14 +3,14 @@ values:
   scaleway:
     fn::open::pulumi-stacks:
       stacks:
-        production:
-          stack: hardes-iac-projects/production
+        project:
+          stack: scaleway-projects/{stack}
 
   environmentVariables:
-    SCW_ACCESS_KEY: ${scaleway.production.accessKey}
-    SCW_SECRET_KEY: ${scaleway.production.secretKey}
-    SCW_DEFAULT_PROJECT_ID: ${scaleway.production.projectId}
+    SCW_ACCESS_KEY: ${{scaleway.project.accessKey}}
+    SCW_SECRET_KEY: ${{scaleway.project.secretKey}}
+    SCW_DEFAULT_PROJECT_ID: ${{scaleway.project.projectId}}
     SCW_DEFAULT_REGION: fr-par
   pulumiConfig:
-    organizationId: ${scaleway.production.organizationId}
-    projectId: ${scaleway.production.projectId}
+    organizationId: ${{scaleway.project.organizationId}}
+    projectId: ${{scaleway.project.projectId}}
