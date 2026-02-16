@@ -1,0 +1,6 @@
+environment:
+  - scaleway/admin
+config:
+  scaleway-projects:project:
+    name: vlaamsepannenkoeken
+    description: Vlaamse Pannenkoeken
