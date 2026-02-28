@@ -66,6 +66,7 @@ api_key = scaleway.iam.ApiKey(
     "apikey-pulumi",
     description=f"Pulumi API Key for {project_info.name}-pulumi",
     application_id=app.id,
+    default_project_id=project.id,
 )
 
 # Create an ESC environment fetching the stack outputs of this same stack.
