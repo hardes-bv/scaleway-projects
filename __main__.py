@@ -85,3 +85,5 @@ pulumi.export("organizationId", scw_organization_id)
 pulumi.export("projectId", project.id)
 pulumi.export("accessKey", api_key.access_key)
 pulumi.export("secretKey", api_key.secret_key)
+with open('./Pulumi.README.md') as f:
+    pulumi.export('readme', f.read())
