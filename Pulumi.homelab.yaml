@@ -3,5 +3,5 @@ environment:
 config:
   scaleway-projects:project:
     name: homelab
-    description: Manage resources related to the homelab
+    description: Manage resources related to the homelab production setup (rack8s)
 
