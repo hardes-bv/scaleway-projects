@@ -1,3 +1,14 @@
+name: "Upgrade the Pulumi Python dependencies"
+pipelineid: "scaleway-projects-update-python-deps"
+
+scms:
+  default:
+    kind: github
+    spec:
+      owner: "{{ .scm.owner }}"
+      repository: "{{ .scm.repository }}"
+      branch: "{{ .scm.branch }}"
+
 autodiscovery:
   crawlers:
     pyproject:
@@ -5,3 +16,14 @@ autodiscovery:
       versionfilter:
         kind: semver
         pattern: minor
+  scmid: default
+
+actions:
+  default:
+    title: 'deps: update Python dependencies'
+    kind: github/pullrequest
+    spec:
+      labels:
+        - chore
+        - skip-changelog
+    scmid: default
