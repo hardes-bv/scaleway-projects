@@ -1,0 +1,7 @@
+autodiscovery:
+  crawlers:
+    pyproject:
+      rootdir: "."
+      versionfilter:
+        kind: semver
+        pattern: minor
