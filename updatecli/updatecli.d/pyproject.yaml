@@ -17,6 +17,7 @@ autodiscovery:
         kind: semver
         pattern: minor
   scmid: default
+  actionid: default
 
 actions:
   default:
