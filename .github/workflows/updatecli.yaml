@@ -19,7 +19,7 @@ jobs:
         env:
           MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          version: 2026.3.7
+          version: 2026.7.14
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # only saving the cache in the prerequisites job
           cache_save: true
