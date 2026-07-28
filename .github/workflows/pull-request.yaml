@@ -17,6 +17,7 @@ jobs:
           - de-smet
           - hardes
           - homelab
+          - homelab-test
           - hostsocials
           - vlaamsepannenkoeken
     steps:
