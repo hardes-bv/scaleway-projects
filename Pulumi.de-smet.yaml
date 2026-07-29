@@ -1,6 +1,6 @@
 environment:
   - scaleway/admin
 config:
-  scaleway-projects:project:
+  iac-scaleway-projects:project:
     name: de-smet
     description: Everything for de-smet.name
