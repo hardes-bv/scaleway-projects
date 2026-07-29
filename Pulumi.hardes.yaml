@@ -1,7 +1,7 @@
 environment:
   - scaleway/admin
 config:
-  siac-scaleway-projects:project:
+  iac-scaleway-projects:project:
     name: hardes
     description: Hardes
 
