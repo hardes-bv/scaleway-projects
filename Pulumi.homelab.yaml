@@ -1,7 +1,7 @@
 environment:
   - scaleway/admin
 config:
-  scaleway-projects:project:
+  iac-scaleway-projects:project:
     name: homelab
     description: Manage resources related to the homelab production setup (rack8s)
 

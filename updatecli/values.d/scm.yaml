@@ -2,5 +2,5 @@ scm:
   commitusingapi: true
   enabled: true
   owner: hardes-bv
-  repository: scaleway-projects
+  repository: iac-scaleway-projects
   branch: main
