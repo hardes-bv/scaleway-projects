@@ -4,7 +4,7 @@ values:
     fn::open::pulumi-stacks:
       stacks:
         project:
-          stack: scaleway-projects/{stack}
+          stack: iac-scaleway-projects/{stack}
 
   environmentVariables:
     SCW_ACCESS_KEY: ${{scaleway.project.accessKey}}
